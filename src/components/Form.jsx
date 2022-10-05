@@ -6,8 +6,8 @@ import { useState } from "react";
 const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const mainForm = (
-    <div className="border border-black absolute top-0 w-full bg-white z-10 h-32">
-      <div>
+    <div className="border p-[1.125rem]  border-black absolute top-0 w-full bg-white z-10 h-32">
+      <div className="flex justify-between border items-center ">
         <p>Edit your search</p>
         <CgClose
           onClick={() => {
