@@ -3,13 +3,21 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import { MdSearch } from "react-icons/md";
 import axios from "axios";
-// import data from "./data/stays.json";
+import Apartment from "./components/Apartment";
 const App = () => {
+  const [apartments, setApartments] = useState(null);
   function getAllApartments() {
     axios
-      .get("../public/data./stays.json")
+      .get("/data/stays.json")
       .then((response) => {
-        console.log(response);
+        const data = response.data;
+        console.log(data);
+
+        setApartments(
+          data.map((apartment) => {
+            return <Apartment data={apartment} />;
+          })
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -18,6 +26,7 @@ const App = () => {
   useEffect(() => {
     getAllApartments();
   }, []);
+
   return (
     <div className="App">
       <Header />
@@ -33,11 +42,14 @@ const App = () => {
         </div>
       </section>
       <main className="w-[90%] mx-auto mt-2">
-        <div className="flex justify-between border">
+        <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
           <p>12+ stays</p>
         </div>
-        <div></div>
+        <div>
+          {/* {apartments} */}
+          <Apartment />
+        </div>
       </main>
     </div>
   );
