@@ -5,7 +5,7 @@ const Apartment = ({ data }) => {
   return (
     <div className="mb-[2rem] w-[21.875rem] mx-auto">
       <div className="rounded-2xl h-[14.8969rem]  overflow-hidden ">
-        <img className="w-[100%] h-[100%]" src={data.photo} alt="apartment" />
+        <img className="w-[100%] h-[100%] object-cover" src={data.photo} alt="apartment" />
       </div>
       <div className="mt-[0.8306rem]">
         <div className="flex borer  justify-between">
@@ -16,7 +16,7 @@ const Apartment = ({ data }) => {
               </p>
             )}
             <p className="text-[0.75rem] ">
-              {data.type} {data.beds && ` . ${data.beds} beds`}{" "}
+              {data.type} {data.beds && ` . ${data.beds} beds`}
             </p>
           </div>
           <p className="text-[0.75rem]  flex items-center ">

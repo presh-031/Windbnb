@@ -6,18 +6,21 @@ import axios from "axios";
 import Apartment from "./components/Apartment";
 const App = () => {
   const [apartments, setApartments] = useState(null);
+  const [staysNum, setStaysNum] = useState(null);
   function getAllApartments() {
     axios
       .get("/data/stays.json")
       .then((response) => {
         const data = response.data;
-        console.log(data);
+        // console.log(data);
+        console.log(data.length);
 
         setApartments(
           data.map((apartment) => {
             return <Apartment data={apartment} />;
           })
         );
+        setStaysNum(data.length);
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +33,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <section className="border  text-sm flex w-fit mx-auto mt-6">
+      <section className="border cursor-pointer  text-sm flex w-fit mx-auto mt-6">
         <div className="border px-4 py-2 ">
           <p className="text-[#BDBDBD]">Add location</p>
         </div>
@@ -44,7 +47,9 @@ const App = () => {
       <main className="w-[21.875rem] mx-auto mt-2">
         <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
-          <p>12+ stays</p>
+          <p>
+            {staysNum} {staysNum && "stays"}
+          </p>
         </div>
         <div>{apartments}</div>
       </main>
