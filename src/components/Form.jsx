@@ -1,10 +1,27 @@
 import { MdSearch } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 import { useState } from "react";
 
-const Form = (props) => {
+const Form = ({ locations }) => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
+  const cities = [];
+  const countries = [];
+  const formSuggestions = locations.map((location) => {
+    const city = location.city;
+    const country = location.country;
+    cities.push(city);
+    countries.push(country);
+    console.log(cities);
+    console.log(countries);
+    return (
+      <li>
+        <FaMapMarkerAlt />
+        {`${city}, ${country}`}
+      </li>
+    );
+  });
   const mainForm = (
     <div className="border p-[1.125rem]  border-black absolute top-0 w-full bg-white z-10">
       <div className="flex justify-between border items-center ">
@@ -25,10 +42,10 @@ const Form = (props) => {
           <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
         </div>
       </div>
-      <div></div>
+      <ul>{formSuggestions}</ul>
     </div>
   );
-  console.log(props.apartments);
+  console.log(locations);
   return (
     <>
       <section

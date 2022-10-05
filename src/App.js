@@ -3,9 +3,11 @@ import Header from "./components/Header";
 import axios from "axios";
 import Form from "./components/Form";
 import Apartment from "./components/Apartment";
+
 const App = () => {
   const [apartments, setApartments] = useState(null);
   const [staysNum, setStaysNum] = useState(null);
+  const [locations, setLocations] = useState([]);
   function getAllApartments() {
     axios
       .get("/data/stays.json")
@@ -20,6 +22,7 @@ const App = () => {
           })
         );
         setStaysNum(data.length);
+        setLocations(data);
       })
       .catch((error) => {
         console.log(error);
@@ -32,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Form apartments={apartments} />
+      <Form locations={locations} />
       <main className="w-[21.875rem] mx-auto mt-2">
         <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
