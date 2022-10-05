@@ -1,7 +1,7 @@
 import { HiStar } from "react-icons/hi";
 
 const Apartment = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="mb-[2rem] w-[21.875rem] mx-auto">
       <div className="rounded-2xl h-[14.8969rem]  overflow-hidden ">
