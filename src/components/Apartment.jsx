@@ -3,12 +3,9 @@ import { HiStar } from "react-icons/hi";
 const Apartment = ({ data }) => {
   console.log(data);
   return (
-    <div className="mb-[2rem]">
-      <div className="rounded-2xl overflow-hidden ">
-        <img
-          src="https://images.unsplash.com/photo-1494203484021-3c454daf695d?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-          alt="apartment"
-        />
+    <div className="mb-[2rem] w-[21.875rem] mx-auto">
+      <div className="rounded-2xl h-[14.8969rem]  overflow-hidden ">
+        <img className="w-[100%] h-[100%]" src={data.photo} alt="apartment" />
       </div>
       <div className="mt-[0.8306rem]">
         <div className="flex borer  justify-between">

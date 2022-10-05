@@ -41,15 +41,12 @@ const App = () => {
           <MdSearch color="#EB5757" size="1.8rem" className="" />
         </div>
       </section>
-      <main className="w-[90%] mx-auto mt-2">
+      <main className="w-[21.875rem] mx-auto mt-2">
         <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
           <p>12+ stays</p>
         </div>
-        <div>
-          {/* {apartments} */}
-          <Apartment />
-        </div>
+        <div>{apartments}</div>
       </main>
     </div>
   );
