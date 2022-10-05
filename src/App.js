@@ -1,8 +1,7 @@
-// import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import { MdSearch } from "react-icons/md";
 import axios from "axios";
+import Form from "./components/Form";
 import Apartment from "./components/Apartment";
 const App = () => {
   const [apartments, setApartments] = useState(null);
@@ -33,17 +32,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <section className="border cursor-pointer  text-sm flex w-fit mx-auto mt-6">
-        <div className="border px-4 py-2 ">
-          <p className="text-[#BDBDBD]">Add location</p>
-        </div>
-        <div className="border px-4 py-2">
-          <p className="text-[#BDBDBD]">Add guests</p>
-        </div>
-        <div className="border px-4  flex items-center justify-center">
-          <MdSearch color="#EB5757" size="1.8rem" className="" />
-        </div>
-      </section>
+      <Form />
       <main className="w-[21.875rem] mx-auto mt-2">
         <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
