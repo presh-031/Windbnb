@@ -10,13 +10,17 @@ const Apartment = ({ data }) => {
       <div className="mt-[0.8306rem]">
         <div className="flex borer  justify-between">
           <div className="flex  ">
-            <p className=" font-bold border border-black  text-[0.625rem] rounded-full grid items-center px-2">
-              SUPER HOST
+            {data.superHost && (
+              <p className="mr-2 font-bold border border-black  text-[0.625rem] rounded-full grid items-center px-2">
+                SUPER HOST
+              </p>
+            )}
+            <p className="text-[0.75rem] ">
+              {data.type} {data.beds && ` . ${data.beds} beds`}{" "}
             </p>
-            <p className="text-[0.75rem] ml-2">Entire apartment . 2 beds</p>
           </div>
           <p className="text-[0.75rem]  flex items-center ">
-            <HiStar size="0.8725rem" className="boder mr-[0.3944rem]" color="#EB5757" />
+            <HiStar size="0.8725rem" className=" mr-[0.3944rem]" color="#EB5757" />
             <span className="">4.40</span>
           </p>
         </div>
