@@ -21,11 +21,11 @@ const Apartment = ({ data }) => {
           </div>
           <p className="text-[0.75rem]  flex items-center ">
             <HiStar size="0.8725rem" className=" mr-[0.3944rem]" color="#EB5757" />
-            <span className="">4.40</span>
+            <span className=""> {data.rating} </span>
           </p>
         </div>
         <div>
-          <p className="text-[0.875rem] font-bold">Stylist apartment in center of the city</p>
+          <p className="text-[0.875rem] font-bold"> {data.title} </p>
         </div>
       </div>
     </div>
