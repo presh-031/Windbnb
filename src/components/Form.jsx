@@ -2,26 +2,57 @@ import { MdSearch } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Form = ({ locations }) => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
-  const cities = [];
-  const countries = [];
-  const formSuggestions = locations.map((location) => {
-    const city = location.city;
-    const country = location.country;
-    cities.push(city);
-    countries.push(country);
-    console.log(cities);
-    console.log(countries);
-    return (
-      <li>
-        <FaMapMarkerAlt />
-        {`${city}, ${country}`}
-      </li>
+  const [countriesSuggestionsDisplayed, setCountriesSuggestionsDisplayed] = useState(null);
+  const [citiesSuggestionsDisplayed, setCitiesSuggestionsDisplayed] = useState(null);
+  function formSuggestions() {
+    const cities = [];
+    const countries = [];
+    locations.forEach((location) => {
+      const city = location.city;
+      const country = location.country;
+      cities.push(city);
+      countries.push(country);
+      // return (
+      //   <li>
+      //     <FaMapMarkerAlt />
+      //     {`${city}, ${country}`}
+      //   </li>
+      // );
+      filteredFormSuggestions(cities, countries);
+    });
+  }
+  function filteredFormSuggestions(cities, countries) {
+    let filteredCities = [];
+    let filteredCountries = [];
+    cities.forEach((c) => {
+      if (!filteredCities.includes(c)) {
+        filteredCities.push(c);
+      }
+    });
+    countries.forEach((c) => {
+      if (!filteredCountries.includes(c)) {
+        filteredCountries.push(c);
+      }
+    });
+    setCountriesSuggestionsDisplayed(
+      filteredCountries.map((country) => {
+        return <p>{country}</p>;
+      })
     );
-  });
+    setCitiesSuggestionsDisplayed(
+      filteredCities.map((city) => {
+        return <p>{city}</p>;
+      })
+    );
+  }
+
+  useEffect(() => {
+    formSuggestions();
+  }, []);
   const mainForm = (
     <div className="border p-[1.125rem]  border-black absolute top-0 w-full bg-white z-10">
       <div className="flex justify-between border items-center ">
@@ -42,10 +73,11 @@ const Form = ({ locations }) => {
           <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
         </div>
       </div>
-      <ul>{formSuggestions}</ul>
+      <div>
+        {citiesSuggestionsDisplayed}, {countriesSuggestionsDisplayed}
+      </div>
     </div>
   );
-  console.log(locations);
   return (
     <>
       <section

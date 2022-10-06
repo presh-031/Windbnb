@@ -14,7 +14,7 @@ const App = () => {
       .then((response) => {
         const data = response.data;
         // console.log(data);
-        console.log(data.length);
+        // console.log(data.length);
 
         setApartments(
           data.map((apartment) => {
