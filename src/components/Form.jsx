@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 
 const Form = ({ locations }) => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
-  const [countriesSuggestionsDisplayed, setCountriesSuggestionsDisplayed] = useState(null);
-  const [citiesSuggestionsDisplayed, setCitiesSuggestionsDisplayed] = useState(null);
+  // const [countriesSuggestionsDisplayed, setCountriesSuggestionsDisplayed] = useState(null);
+  // const [citiesSuggestionsDisplayed, setCitiesSuggestionsDisplayed] = useState(null);
+  // const [displayed, setDisplayed] = useState(null);
+  let countriesSuggestionsDisplayed;
+  let citiesSuggestionsDisplayed;
   function formSuggestions() {
     const cities = [];
     const countries = [];
@@ -26,28 +29,33 @@ const Form = ({ locations }) => {
     });
   }
   function filteredFormSuggestions(cities, countries) {
-    let filteredCities = [];
-    let filteredCountries = [];
-    cities.forEach((c) => {
-      if (!filteredCities.includes(c)) {
-        filteredCities.push(c);
-      }
+    // let filteredCities = [];
+    // let filteredCountries = [];
+    // cities.forEach((c) => {
+    //   if (!filteredCities.includes(c)) {
+    //     filteredCities.push(c);
+    //   }
+    // });
+    const filteredCities = [...new Set(cities.map((city) => city))];
+    console.log(filteredCities);
+    const filteredCountries = [...new Set(countries.map((country) => country))];
+    filteredCountries.forEach((country) => {
+      countriesSuggestionsDisplayed = country;
     });
-    countries.forEach((c) => {
-      if (!filteredCountries.includes(c)) {
-        filteredCountries.push(c);
-      }
+    filteredCities.forEach((city) => {
+      citiesSuggestionsDisplayed = city;
     });
-    setCountriesSuggestionsDisplayed(
-      filteredCountries.map((country) => {
-        return <p>{country}</p>;
-      })
-    );
-    setCitiesSuggestionsDisplayed(
-      filteredCities.map((city) => {
-        return <p>{city}</p>;
-      })
-    );
+    // setDisplayed(countriesSuggestionsDisplayed, citiesSuggestionsDisplayed);
+    // setCountriesSuggestionsDisplayed(
+    //   filteredCountries.map((country) => {
+    //     return <p>{country}</p>;
+    //   })
+    // );
+    // setCitiesSuggestionsDisplayed(
+    //   filteredCities.map((city) => {
+    //     return <p>{city}</p>;
+    //   })
+    // );
   }
 
   useEffect(() => {
@@ -73,9 +81,7 @@ const Form = ({ locations }) => {
           <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
         </div>
       </div>
-      <div>
-        {citiesSuggestionsDisplayed}, {countriesSuggestionsDisplayed}
-      </div>
+      <div>{/* {citiesSuggestionsDisplayed}, {countriesSuggestionsDisplayed} */}</div>
     </div>
   );
   return (
