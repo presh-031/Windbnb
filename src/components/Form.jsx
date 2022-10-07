@@ -1,66 +1,51 @@
 import { MdSearch } from "react-icons/md";
-import { CgClose } from "react-icons/cg";
+import { CgClose, CgNametag } from "react-icons/cg";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
 
 const Form = ({ locations }) => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
-  // const [countriesSuggestionsDisplayed, setCountriesSuggestionsDisplayed] = useState(null);
-  // const [citiesSuggestionsDisplayed, setCitiesSuggestionsDisplayed] = useState(null);
-  // const [displayed, setDisplayed] = useState(null);
-  let countriesSuggestionsDisplayed;
-  let citiesSuggestionsDisplayed;
+  // let countriesSuggestionsDisplayed;
+  // let citiesSuggestionsDisplayed;
   function formSuggestions() {
     const cities = [];
     const countries = [];
     locations.forEach((location) => {
-      const city = location.city;
-      const country = location.country;
-      cities.push(city);
-      countries.push(country);
+      cities.push(location.city);
+      countries.push(location.country);
+      // const cities = [location.city];
+      // const countries = [location.country];
       // return (
       //   <li>
       //     <FaMapMarkerAlt />
       //     {`${city}, ${country}`}
       //   </li>
       // );
-      filteredFormSuggestions(cities, countries);
     });
+    filteredFormSuggestions(cities, countries);
   }
   function filteredFormSuggestions(cities, countries) {
-    // let filteredCities = [];
-    // let filteredCountries = [];
-    // cities.forEach((c) => {
-    //   if (!filteredCities.includes(c)) {
-    //     filteredCities.push(c);
-    //   }
+    console.log("??");
+    console.log(cities);
+    console.log(countries);
+    // const filteredCities = [...new Set(cities)];
+    // const filteredCountries = [...new Set(countries)];
+    // filteredCountries.forEach((country) => {
+    //   countriesSuggestionsDisplayed = country;
     // });
-    const filteredCities = [...new Set(cities.map((city) => city))];
-    console.log(filteredCities);
-    const filteredCountries = [...new Set(countries.map((country) => country))];
-    filteredCountries.forEach((country) => {
-      countriesSuggestionsDisplayed = country;
-    });
-    filteredCities.forEach((city) => {
-      citiesSuggestionsDisplayed = city;
-    });
-    // setDisplayed(countriesSuggestionsDisplayed, citiesSuggestionsDisplayed);
-    // setCountriesSuggestionsDisplayed(
-    //   filteredCountries.map((country) => {
-    //     return <p>{country}</p>;
-    //   })
-    // );
-    // setCitiesSuggestionsDisplayed(
-    //   filteredCities.map((city) => {
-    //     return <p>{city}</p>;
-    //   })
-    // );
+    // filteredCities.forEach((city) => {
+    //   citiesSuggestionsDisplayed = city;
+    // });
+    // console.log(filteredCities);
+    // console.log(filteredCountries);
   }
 
   useEffect(() => {
     formSuggestions();
+    // console.log("useeffect runninggg");
   }, []);
+
   const mainForm = (
     <div className="border p-[1.125rem]  border-black absolute top-0 w-full bg-white z-10">
       <div className="flex justify-between border items-center ">
