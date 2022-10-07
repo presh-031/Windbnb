@@ -14,21 +14,24 @@ const Form = ({ locations }) => {
     locations.forEach((location) => {
       cities.push(location.city);
       countries.push(location.country);
-      // const cities = [location.city];
-      // const countries = [location.country];
       // return (
       //   <li>
       //     <FaMapMarkerAlt />
       //     {`${city}, ${country}`}
       //   </li>
       // );
+      filteredFormSuggestions(cities, countries);
     });
-    filteredFormSuggestions(cities, countries);
   }
   function filteredFormSuggestions(cities, countries) {
     console.log("??");
     console.log(cities);
     console.log(countries);
+    cities.forEach((city) => {
+      countries.forEach((country) => {
+        console.log(`${city}, ${country}`);
+      });
+    });
     // const filteredCities = [...new Set(cities)];
     // const filteredCountries = [...new Set(countries)];
     // filteredCountries.forEach((country) => {

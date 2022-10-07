@@ -18,7 +18,7 @@ const App = () => {
 
         setApartments(
           data.map((apartment) => {
-            return <Apartment data={apartment} />;
+            return <Apartment key={apartment.key} data={apartment} />;
           })
         );
         setStaysNum(data.length);
