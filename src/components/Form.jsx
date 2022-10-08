@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { MdSearch } from "react-icons/md";
-import { CgClose, CgNametag } from "react-icons/cg";
+import { CgClose } from "react-icons/cg";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
@@ -43,7 +42,7 @@ const Form = () => {
         </p>
       </div>
       <div className="text-center">
-        <button className=" bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]">
+        <button className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]">
           <MdSearch />
           Search
         </button>
