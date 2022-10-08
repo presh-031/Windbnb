@@ -5,32 +5,8 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 import { useState, useEffect } from "react";
 
-const Form = ({ locations }) => {
+const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
-  const [suggestions, setSuggestions] = useState("");
-  function formSuggestions() {
-    const cities = [];
-    const countries = [];
-    locations.forEach((location) => {
-      cities.push(location.city);
-      countries.push(location.country);
-    });
-    filteredFormSuggestions(cities, countries);
-  }
-  function filteredFormSuggestions(cities, countries) {
-    const filteredCities = [...new Set(cities)];
-    const filteredCountries = [...new Set(countries)];
-
-    filteredCities.forEach((city) => {
-      filteredCountries.forEach((country) => {
-        setSuggestions(`${city}, ${country}`);
-      });
-    });
-  }
-
-  useEffect(() => {
-    formSuggestions();
-  }, []);
 
   const mainForm = (
     <div className="border p-[1.125rem]  border-black absolute top-0 w-full bg-white z-10">
@@ -52,7 +28,26 @@ const Form = ({ locations }) => {
           <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
         </div>
       </div>
-      <div>{suggestions}</div>
+      <div className="flex flex-col mb-[11.375rem] mt-[2.25rem] ml-[1.75rem]  gap-y-[2.25rem]">
+        <p className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+          <FaMapMarkerAlt /> Helsinki, Finland
+        </p>
+        <p className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+          <FaMapMarkerAlt /> Turku, Finland
+        </p>
+        <p className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+          <FaMapMarkerAlt /> Oulu, Finland
+        </p>
+        <p className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+          <FaMapMarkerAlt /> Vaasa, Finland
+        </p>
+      </div>
+      <div className="text-center">
+        <button className=" bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]">
+          <MdSearch />
+          Search
+        </button>
+      </div>
     </div>
   );
   return (
