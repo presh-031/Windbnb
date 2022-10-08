@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { MdSearch } from "react-icons/md";
 import { CgClose, CgNametag } from "react-icons/cg";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -6,47 +7,29 @@ import { useState, useEffect } from "react";
 
 const Form = ({ locations }) => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
-  // let countriesSuggestionsDisplayed;
-  // let citiesSuggestionsDisplayed;
+  const [suggestions, setSuggestions] = useState("");
   function formSuggestions() {
     const cities = [];
     const countries = [];
     locations.forEach((location) => {
       cities.push(location.city);
       countries.push(location.country);
-      // return (
-      //   <li>
-      //     <FaMapMarkerAlt />
-      //     {`${city}, ${country}`}
-      //   </li>
-      // );
-      filteredFormSuggestions(cities, countries);
     });
+    filteredFormSuggestions(cities, countries);
   }
   function filteredFormSuggestions(cities, countries) {
-    console.log("??");
-    console.log(cities);
-    console.log(countries);
-    cities.forEach((city) => {
-      countries.forEach((country) => {
-        console.log(`${city}, ${country}`);
+    const filteredCities = [...new Set(cities)];
+    const filteredCountries = [...new Set(countries)];
+
+    filteredCities.forEach((city) => {
+      filteredCountries.forEach((country) => {
+        setSuggestions(`${city}, ${country}`);
       });
     });
-    // const filteredCities = [...new Set(cities)];
-    // const filteredCountries = [...new Set(countries)];
-    // filteredCountries.forEach((country) => {
-    //   countriesSuggestionsDisplayed = country;
-    // });
-    // filteredCities.forEach((city) => {
-    //   citiesSuggestionsDisplayed = city;
-    // });
-    // console.log(filteredCities);
-    // console.log(filteredCountries);
   }
 
   useEffect(() => {
     formSuggestions();
-    // console.log("useeffect runninggg");
   }, []);
 
   const mainForm = (
@@ -69,7 +52,7 @@ const Form = ({ locations }) => {
           <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
         </div>
       </div>
-      <div>{/* {citiesSuggestionsDisplayed}, {countriesSuggestionsDisplayed} */}</div>
+      <div>{suggestions}</div>
     </div>
   );
   return (

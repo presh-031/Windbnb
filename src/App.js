@@ -7,7 +7,7 @@ import Apartment from "./components/Apartment";
 const App = () => {
   const [apartments, setApartments] = useState(null);
   const [staysNum, setStaysNum] = useState(null);
-  const [locations, setLocations] = useState([]);
+  const [locations, setLocations] = useState(null);
   function getAllApartments() {
     axios
       .get("/data/stays.json")
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Form locations={locations} />
+      {locations && <Form locations={locations} />}
       <main className="w-[21.875rem] mx-auto mt-2">
         <div className="flex mb-[1.5rem] justify-between border">
           <h2 className="font-bold">Stays in Finland</h2>
