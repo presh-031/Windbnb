@@ -41,10 +41,11 @@ const Form = () => {
     setChildrenGuests(secondCount);
   }
 
-  function handleSearch() {
+  function handleSearchBtnClick() {
     console.log(location);
     console.log(adultGuests);
     console.log(childrenGuests);
+    setMainFormIsOpen(false);
   }
 
   return (
@@ -66,7 +67,7 @@ const Form = () => {
         </div>
       </section>
       {mainFormIsOpen && (
-        <div className=" p-[1.125rem]   absolute top-0 w-full bg-white z-10">
+        <div className=" p-[1.125rem]  absolute top-0 w-full bg-white z-10">
           <div className="flex font-bold text-[0.75rem] justify-between  items-center ">
             Edit your search
             <CgClose
@@ -128,7 +129,7 @@ const Form = () => {
           )}
           <div className="text-center">
             <button
-              onClick={handleSearch}
+              onClick={handleSearchBtnClick}
               className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
             >
               <MdSearch />
