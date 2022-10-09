@@ -9,7 +9,7 @@ import Counter from "./Counter";
 const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
-  const [guests, setGuests] = useState("Add guests");
+  const [guests, setGuests] = useState(null);
   const [showLocations, setShowLocations] = useState(true);
   const [showGuests, setShowGuests] = useState(false);
 
@@ -30,9 +30,8 @@ const Form = () => {
     setShowGuests(true);
   }
 
-  function handleCount(count1, count2) {
-    console.log(count1, count2);
-  }
+  function handleFirstCount(firstCount) {}
+  function handleSecondCount(secondCount) {}
 
   return (
     <>
@@ -70,7 +69,7 @@ const Form = () => {
             </div>
             <div className=" py-[0.6875rem] px-[1.625rem]" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
-              <p className="text-[0.875rem] text-[#bdbdbd]">{guests}</p>
+              <p className="text-[0.875rem] text-[#bdbdbd]">{guests ? guests : "Add guests"}</p>
             </div>
           </div>
           {showLocations && (
@@ -97,12 +96,12 @@ const Form = () => {
               <div className="mb-[3.25rem]">
                 <p className="text-[0.875rem] font-bold">Adults</p>
                 <p className="text-[0.875rem]">Ages 13 or above</p>
-                <Counter handleCount={handleCount} />
+                <Counter handleCount={handleFirstCount} />
               </div>
               <div>
                 <p className="text-[0.875rem] font-bold">Children</p>
                 <p className="text-[0.875rem]">Ages 2-12</p>
-                <Counter handleCount={handleCount} />
+                <Counter handleCount={handleSecondCount} />
               </div>
             </div>
           )}
