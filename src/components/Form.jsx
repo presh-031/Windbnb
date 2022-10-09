@@ -36,9 +36,6 @@ const Form = () => {
   function handleSecondCount(secondCount) {
     setChildrenGuests(secondCount);
   }
-  // function totalGuests(firstCount, secondCount) {
-  //   firstCount + secondCount;
-  // }
 
   return (
     <>
@@ -76,7 +73,7 @@ const Form = () => {
             </div>
             <div className=" py-[0.6875rem] px-[1.625rem]" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
-              <p className="text-[0.875rem] text-[#bdbdbd]">
+              <p className={childrenGuests || adultGuests ? "" : "text-[0.875rem] text-[#bdbdbd]"}>
                 {childrenGuests || adultGuests ? `${childrenGuests + adultGuests} guests ` : "Add guests"}
               </p>
             </div>
