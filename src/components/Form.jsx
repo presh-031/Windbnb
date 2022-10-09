@@ -7,6 +7,7 @@ import { useState } from "react";
 import Counter from "./Counter";
 
 const Form = () => {
+  console.count("Form ");
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
   const [adultGuests, setAdultGuests] = useState(null);
@@ -17,6 +18,7 @@ const Form = () => {
   function handleLocationClick(e) {
     setLocation(e.target.innerText);
   }
+
   function handleAnyLocationClick() {
     setLocation(null);
   }
@@ -75,7 +77,12 @@ const Form = () => {
             />
           </div>
           <div className=" mt-[1rem] rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
-            <div className=" py-[0.6875rem] px-[1.625rem]  border-b" onClick={handleAddLocationClick}>
+            <div
+              className=" py-[0.6875rem] px-[1.625rem]
+               focus-within:border-[#000000]
+                border-b"
+              onClick={handleAddLocationClick}
+            >
               <p className="text-[0.5625rem] font-bold">LOCATION</p>
               <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>{location ? location : "Add location"}</p>
             </div>
