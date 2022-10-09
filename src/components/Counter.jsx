@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { GrSubtract, GrAdd } from "react-icons/gr";
 
-const Counter = () => {
+const Counter = ({ handleCount }) => {
   const [count, setCount] = useState(0);
 
   function incrementCount() {
-    setCount(count + 1);
+    setCount((prevCount) => prevCount + 1);
+    handleCount(count + 1);
   }
 
   function decrementCount() {
     // Count shouldn't go less than 0.
-    count === 0 ? setCount(count) : setCount(count - 1);
+    count === 0 ? setCount(count) : setCount((prevCount) => prevCount - 1);
+    handleCount(count === 0 ? count : count - 1);
   }
 
   return (

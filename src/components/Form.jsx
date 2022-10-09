@@ -30,6 +30,10 @@ const Form = () => {
     setShowGuests(true);
   }
 
+  function handleCount(count) {
+    console.log(count);
+  }
+
   return (
     <>
       <section
@@ -93,12 +97,12 @@ const Form = () => {
               <div className="mb-[3.25rem]">
                 <p className="text-[0.875rem] font-bold">Adults</p>
                 <p className="text-[0.875rem]">Ages 13 or above</p>
-                <Counter />
+                <Counter handleCount={handleCount} />
               </div>
               <div>
                 <p className="text-[0.875rem] font-bold">Children</p>
                 <p className="text-[0.875rem]">Ages 2-12</p>
-                <Counter />
+                <Counter handleCount={handleCount} />
               </div>
             </div>
           )}
