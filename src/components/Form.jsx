@@ -30,8 +30,8 @@ const Form = () => {
     setShowGuests(true);
   }
 
-  function handleCount(count) {
-    console.log(count);
+  function handleCount(count1, count2) {
+    console.log(count1, count2);
   }
 
   return (
