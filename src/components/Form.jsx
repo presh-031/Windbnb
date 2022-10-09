@@ -9,7 +9,8 @@ import Counter from "./Counter";
 const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
-  const [guests, setGuests] = useState(null);
+  const [adultGuests, setAdultGuests] = useState(null);
+  const [childrenGuests, setChildrenGuests] = useState(null);
   const [showLocations, setShowLocations] = useState(true);
   const [showGuests, setShowGuests] = useState(false);
 
@@ -29,9 +30,15 @@ const Form = () => {
     setShowLocations(false);
     setShowGuests(true);
   }
-
-  function handleFirstCount(firstCount) {}
-  function handleSecondCount(secondCount) {}
+  function handleFirstCount(firstCount) {
+    setAdultGuests(firstCount);
+  }
+  function handleSecondCount(secondCount) {
+    setChildrenGuests(secondCount);
+  }
+  // function totalGuests(firstCount, secondCount) {
+  //   firstCount + secondCount;
+  // }
 
   return (
     <>
@@ -69,7 +76,9 @@ const Form = () => {
             </div>
             <div className=" py-[0.6875rem] px-[1.625rem]" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
-              <p className="text-[0.875rem] text-[#bdbdbd]">{guests ? guests : "Add guests"}</p>
+              <p className="text-[0.875rem] text-[#bdbdbd]">
+                {childrenGuests || adultGuests ? `${childrenGuests + adultGuests} guests ` : "Add guests"}
+              </p>
             </div>
           </div>
           {showLocations && (
