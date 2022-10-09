@@ -4,12 +4,32 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 import { useState } from "react";
 
+import Counter from "./Counter";
+
 const Form = () => {
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
+  const [location, setLocation] = useState(null);
+  const [guests, setGuests] = useState("Add guests");
+  const [showLocations, setShowLocations] = useState(true);
+  const [showGuests, setShowGuests] = useState(false);
 
-  function handleClick(e) {
-    console.log(e.target.innerText);
+  function handleLocationClick(e) {
+    setLocation(e.target.innerText);
   }
+  function handleAnyLocationClick() {
+    setLocation(null);
+  }
+
+  function handleAddLocationClick() {
+    setShowLocations(true);
+    setShowGuests(false);
+  }
+
+  function handleAddGuestsClick() {
+    setShowLocations(false);
+    setShowGuests(true);
+  }
+
   return (
     <>
       <section
@@ -40,29 +60,48 @@ const Form = () => {
             />
           </div>
           <div className=" mt-[1rem] rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
-            <div className=" py-[0.6875rem] px-[1.625rem]  border-b">
+            <div className=" py-[0.6875rem] px-[1.625rem]  border-b" onClick={handleAddLocationClick}>
               <p className="text-[0.5625rem] font-bold">LOCATION</p>
-              <p className="text-[0.875rem] text-[#bdbdbd]">Add location</p>
+              <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>{location ? location : "Add location"}</p>
             </div>
-            <div className=" py-[0.6875rem] px-[1.625rem]">
+            <div className=" py-[0.6875rem] px-[1.625rem]" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
-              <p className="text-[0.875rem] text-[#bdbdbd]">Add guests</p>
+              <p className="text-[0.875rem] text-[#bdbdbd]">{guests}</p>
             </div>
           </div>
-          <div className="flex flex-col mb-[11.375rem] mt-[2.25rem] ml-[1.75rem]  gap-y-[2.25rem]">
-            <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
-              <FaMapMarkerAlt /> <p onClick={handleClick}>Helsinki, Finland</p>
+          {showLocations && (
+            <div className="flex flex-col mb-[11.375rem] mt-[2.25rem] ml-[1.75rem]  gap-y-[2.25rem]">
+              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+                <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Helsinki, Finland</p>
+              </div>
+              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+                <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Turku, Finland</p>
+              </div>
+              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+                <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Oulu, Finland</p>
+              </div>
+              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+                <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Vaasa, Finland</p>
+              </div>
+              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+                <FaMapMarkerAlt /> <p onClick={handleAnyLocationClick}>Any</p>
+              </div>
             </div>
-            <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
-              <FaMapMarkerAlt /> <p onClick={handleClick}>Turku, Finland</p>
+          )}
+          {showGuests && (
+            <div className=" mt-[3rem] ml-[1rem] mb-[11.375rem]">
+              <div className="mb-[3.25rem]">
+                <p className="text-[0.875rem] font-bold">Adults</p>
+                <p className="text-[0.875rem]">Ages 13 or above</p>
+                <Counter />
+              </div>
+              <div>
+                <p className="text-[0.875rem] font-bold">Children</p>
+                <p className="text-[0.875rem]">Ages 2-12</p>
+                <Counter />
+              </div>
             </div>
-            <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
-              <FaMapMarkerAlt /> <p onClick={handleClick}>Oulu, Finland</p>
-            </div>
-            <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
-              <FaMapMarkerAlt /> <p onClick={handleClick}>Vaasa, Finland</p>
-            </div>
-          </div>
+          )}
           <div className="text-center">
             <button className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]">
               <MdSearch />
