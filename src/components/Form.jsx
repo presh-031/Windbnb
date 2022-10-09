@@ -30,11 +30,19 @@ const Form = () => {
     setShowLocations(false);
     setShowGuests(true);
   }
+
   function handleFirstCount(firstCount) {
     setAdultGuests(firstCount);
   }
+
   function handleSecondCount(secondCount) {
     setChildrenGuests(secondCount);
+  }
+
+  function handleSearch() {
+    console.log(location);
+    console.log(adultGuests);
+    console.log(childrenGuests);
   }
 
   return (
@@ -112,7 +120,10 @@ const Form = () => {
             </div>
           )}
           <div className="text-center">
-            <button className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]">
+            <button
+              onClick={handleSearch}
+              className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
+            >
               <MdSearch />
               Search
             </button>
