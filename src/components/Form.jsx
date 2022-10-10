@@ -7,12 +7,10 @@ import { useState } from "react";
 import Counter from "./Counter";
 
 const Form = ({ getFilterData }) => {
-  console.count("Form ");
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
   const [adultGuests, setAdultGuests] = useState(0);
   const [childrenGuests, setChildrenGuests] = useState(0);
-  // const [totalGuests, setTotalGuests] = useState(childrenGuests + adultGuests);
   const [showLocations, setShowLocations] = useState(true);
   const [showGuests, setShowGuests] = useState(false);
 
@@ -44,6 +42,8 @@ const Form = ({ getFilterData }) => {
 
   function handleSearchBtnClick() {
     getFilterData(location, adultGuests + childrenGuests);
+    setChildrenGuests(0);
+    setAdultGuests(0);
     setMainFormIsOpen(false);
   }
   return (

@@ -13,7 +13,6 @@ const App = () => {
       return <Apartment key={apartment.key} data={apartment} />;
     })
   );
-  // const [filteredData, setFilteredData] = useState([]);
 
   let filteredData = [];
   function getFilterData(location, guests) {
@@ -32,9 +31,7 @@ const App = () => {
         return <Apartment key={apartment.key} data={apartment} />;
       })
     );
-    console.log(availableStays);
   }
-  console.log(availableStays);
   return (
     <>
       <Header />
