@@ -42,6 +42,7 @@ const Form = ({ getFilterData }) => {
 
   function handleSearchBtnClick() {
     getFilterData(location, adultGuests + childrenGuests);
+    setLocation(null);
     setChildrenGuests(0);
     setAdultGuests(0);
     setMainFormIsOpen(false);
@@ -52,15 +53,15 @@ const Form = ({ getFilterData }) => {
         onClick={() => {
           setMainFormIsOpen(true);
         }}
-        className="border cursor-pointer  text-sm flex w-fit mx-auto mt-6"
+        className="shadow-[0_1px_6px_rgba(0,0,0,0.1)] rounded-2xl  cursor-pointer  text-sm flex w-fit mx-auto mt-[1.25rem]"
       >
-        <div className="border px-4 py-2 ">
+        <div className="px-[1rem] border-r py-[0.625rem] flex items-center ">
           <p className="text-[#BDBDBD]">Add location</p>
         </div>
-        <div className="border px-4 py-2">
+        <div className="px-[1rem] border-r py-[0.625rem] flex items-center">
           <p className="text-[#BDBDBD]">Add guests</p>
         </div>
-        <div className="border px-4  flex items-center justify-center">
+        <div className="px-[1rem] py-[0.625rem] flex items-center justify-center">
           <MdSearch color="#EB5757" size="1.8rem" className="" />
         </div>
       </section>
@@ -116,12 +117,12 @@ const Form = ({ getFilterData }) => {
               <div className="mb-[3.25rem]">
                 <p className="text-[0.875rem] font-bold">Adults</p>
                 <p className="text-[0.875rem]">Ages 13 or above</p>
-                <Counter handleCount={handleFirstCount} />
+                <Counter handleCount={handleFirstCount} count={adultGuests} />
               </div>
               <div>
                 <p className="text-[0.875rem] font-bold">Children</p>
                 <p className="text-[0.875rem]">Ages 2-12</p>
-                <Counter handleCount={handleSecondCount} />
+                <Counter handleCount={handleSecondCount} count={childrenGuests} />
               </div>
             </div>
           )}
