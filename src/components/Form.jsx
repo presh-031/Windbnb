@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import Counter from "./Counter";
 
-const Form = () => {
+const Form = ({ getFilterData }) => {
   console.count("Form ");
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
@@ -42,9 +42,7 @@ const Form = () => {
   }
 
   function handleSearchBtnClick() {
-    console.log(location);
-    console.log(adultGuests);
-    console.log(childrenGuests);
+    getFilterData(location, adultGuests + childrenGuests);
     setMainFormIsOpen(false);
   }
 
