@@ -16,15 +16,31 @@ const App = () => {
   );
 
   function getFilterData(location, guests) {
-    const filteredData = staysdata.filter((stay) => {
-      return stay.maxGuests >= guests && location === `${stay.city}, ${stay.country}`;
-    });
-
+    let filteredData;
+    if (location === null) {
+      filteredData = staysdata.filter((stay) => {
+        return stay.maxGuests >= guests;
+      });
+    } else {
+      filteredData = staysdata.filter((stay) => {
+        return stay.maxGuests >= guests && location === `${stay.city}, ${stay.country}`;
+      });
+    }
     setAvailableStays(
       filteredData.map((apartment) => {
         return <Apartment key={apartment.key} data={apartment} />;
       })
     );
+
+    // const filteredData = staysdata.filter((stay) => {
+    //   return stay.maxGuests >= guests && location === `${stay.city}, ${stay.country}`;
+    // });
+
+    // setAvailableStays(
+    //   filteredData.map((apartment) => {
+    //     return <Apartment key={apartment.key} data={apartment} />;
+    //   })
+    // );
   }
   return (
     <>
