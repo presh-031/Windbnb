@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import axios from "axios";
 
 import Stays from "./components/Stays";
 import Header from "./components/Header";
@@ -14,9 +13,10 @@ const App = () => {
       return <Apartment key={apartment.key} data={apartment} />;
     })
   );
+  // const [filteredData, setFilteredData] = useState([]);
 
+  let filteredData = [];
   function getFilterData(location, guests) {
-    let filteredData;
     if (location === null) {
       filteredData = staysdata.filter((stay) => {
         return stay.maxGuests >= guests;
@@ -26,27 +26,20 @@ const App = () => {
         return stay.maxGuests >= guests && location === `${stay.city}, ${stay.country}`;
       });
     }
+
     setAvailableStays(
       filteredData.map((apartment) => {
         return <Apartment key={apartment.key} data={apartment} />;
       })
     );
-
-    // const filteredData = staysdata.filter((stay) => {
-    //   return stay.maxGuests >= guests && location === `${stay.city}, ${stay.country}`;
-    // });
-
-    // setAvailableStays(
-    //   filteredData.map((apartment) => {
-    //     return <Apartment key={apartment.key} data={apartment} />;
-    //   })
-    // );
+    console.log(availableStays);
   }
+  console.log(availableStays);
   return (
     <>
       <Header />
       <Form getFilterData={getFilterData} />
-      <Stays staysNum={staysdata.length} />
+      <Stays staysNum={availableStays.length} />
       <div>{availableStays}</div>
     </>
   );

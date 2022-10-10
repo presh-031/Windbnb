@@ -10,8 +10,9 @@ const Form = ({ getFilterData }) => {
   console.count("Form ");
   const [mainFormIsOpen, setMainFormIsOpen] = useState(false);
   const [location, setLocation] = useState(null);
-  const [adultGuests, setAdultGuests] = useState(null);
-  const [childrenGuests, setChildrenGuests] = useState(null);
+  const [adultGuests, setAdultGuests] = useState(0);
+  const [childrenGuests, setChildrenGuests] = useState(0);
+  // const [totalGuests, setTotalGuests] = useState(childrenGuests + adultGuests);
   const [showLocations, setShowLocations] = useState(true);
   const [showGuests, setShowGuests] = useState(false);
 
@@ -45,7 +46,6 @@ const Form = ({ getFilterData }) => {
     getFilterData(location, adultGuests + childrenGuests);
     setMainFormIsOpen(false);
   }
-
   return (
     <>
       <section
@@ -69,6 +69,7 @@ const Form = ({ getFilterData }) => {
           <div className="flex font-bold text-[0.75rem] justify-between  items-center ">
             Edit your search
             <CgClose
+              className="cursor-pointer"
               size={20}
               onClick={() => {
                 setMainFormIsOpen(false);
@@ -78,14 +79,13 @@ const Form = ({ getFilterData }) => {
           <div className=" mt-[1rem] rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
             <div
               className=" py-[0.6875rem] px-[1.625rem]
-               focus-within:border-[#000000]
-                border-b"
+                border-b cursor-pointer "
               onClick={handleAddLocationClick}
             >
               <p className="text-[0.5625rem] font-bold">LOCATION</p>
               <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>{location ? location : "Add location"}</p>
             </div>
-            <div className=" py-[0.6875rem] px-[1.625rem]" onClick={handleAddGuestsClick}>
+            <div className=" py-[0.6875rem] px-[1.625rem] cursor-pointer" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
               <p className={childrenGuests || adultGuests ? "" : "text-[0.875rem] text-[#bdbdbd]"}>
                 {childrenGuests || adultGuests ? `${childrenGuests + adultGuests} guests ` : "Add guests"}
@@ -94,19 +94,19 @@ const Form = ({ getFilterData }) => {
           </div>
           {showLocations && (
             <div className="flex flex-col mb-[11.375rem] mt-[2.25rem] ml-[1.75rem]  gap-y-[2.25rem]">
-              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+              <div className="flex cursor-pointer items-center gap-x-[0.625rem] text-[0.875rem]">
                 <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Helsinki, Finland</p>
               </div>
-              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+              <div className="flex cursor-pointer items-center gap-x-[0.625rem] text-[0.875rem]">
                 <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Turku, Finland</p>
               </div>
-              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+              <div className="flex cursor-pointer items-center gap-x-[0.625rem] text-[0.875rem]">
                 <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Oulu, Finland</p>
               </div>
-              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+              <div className="flex cursor-pointer items-center gap-x-[0.625rem] text-[0.875rem]">
                 <FaMapMarkerAlt /> <p onClick={handleLocationClick}>Vaasa, Finland</p>
               </div>
-              <div className="flex items-center gap-x-[0.625rem] text-[0.875rem]">
+              <div className="flex cursor-pointer items-center gap-x-[0.625rem] text-[0.875rem]">
                 <FaMapMarkerAlt /> <p onClick={handleAnyLocationClick}>Any</p>
               </div>
             </div>
