@@ -47,6 +47,7 @@ const Form = ({ getFilterData }) => {
     setAdultGuests(0);
     setMainFormIsOpen(false);
   }
+
   return (
     <>
       <section
@@ -56,7 +57,7 @@ const Form = ({ getFilterData }) => {
         className="shadow-[0_1px_6px_rgba(0,0,0,0.1)] rounded-2xl  cursor-pointer  text-sm flex w-fit mx-auto mt-[1.25rem] sm:m-0 sm:mt-0"
       >
         <div className="px-[1rem] border-r py-[0.625rem] flex items-center ">
-          <p className="text-[#BDBDBD]">{location ? location : "Add location"}</p>
+          <p className="text-[#BDBDBD]">Add location</p>
         </div>
         <div className="px-[1rem] border-r py-[0.625rem] flex items-center">
           <p className="text-[#BDBDBD]">Add guests</p>
@@ -77,26 +78,26 @@ const Form = ({ getFilterData }) => {
               }}
             />
           </div>
-          <div className=" mt-[1rem] sm:flex border border-red-800 rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
+          <div className=" mt-[1rem] sm:flex sm:items-center sm:justify-center  rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
             <div
-              className="  py-[0.6875rem] px-[1.625rem] border border-red-800
-                border-b cursor-pointer "
+              className="sm:flex-1  py-[0.6875rem] px-[1.625rem] 
+                border-r cursor-pointer "
               onClick={handleAddLocationClick}
             >
               <p className="text-[0.5625rem] font-bold">LOCATION</p>
-              <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>Add location</p>
+              <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>{location ? location : "Add location"}</p>
             </div>
-            <div className=" py-[0.6875rem] px-[1.625rem] cursor-pointer" onClick={handleAddGuestsClick}>
+            <div
+              className="sm:flex-1 py-[0.6875rem] px-[1.625rem] border-r cursor-pointer"
+              onClick={handleAddGuestsClick}
+            >
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
               <p className={childrenGuests || adultGuests ? "" : "text-[0.875rem] text-[#bdbdbd]"}>
                 {childrenGuests || adultGuests ? `${childrenGuests + adultGuests} guests ` : "Add guests"}
               </p>
             </div>
-            <div className="text-center hidden sm:block">
-              <button
-                onClick={handleSearchBtnClick}
-                className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
-              >
+            <div className=" hidden sm:flex  sm:flex-1   ">
+              <button onClick={handleSearchBtnClick} className="btn  sm:mt-[0.8rem]">
                 <MdSearch />
                 Search
               </button>
@@ -122,7 +123,7 @@ const Form = ({ getFilterData }) => {
             </div>
           )}
           {showGuests && (
-            <div className=" mt-[3rem] ml-[1rem] mb-[11.375rem]">
+            <div className=" mt-[3rem] ml-[1rem] mb-[11.375rem] sm:ml-[35%]">
               <div className="mb-[3.25rem]">
                 <p className="text-[0.875rem] font-bold">Adults</p>
                 <p className="text-[0.875rem]">Ages 13 or above</p>
@@ -136,10 +137,7 @@ const Form = ({ getFilterData }) => {
             </div>
           )}
           <div className="text-center sm:hidden">
-            <button
-              onClick={handleSearchBtnClick}
-              className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
-            >
+            <button onClick={handleSearchBtnClick} className="btn">
               <MdSearch />
               Search
             </button>
