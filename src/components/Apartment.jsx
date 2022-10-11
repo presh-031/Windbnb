@@ -2,9 +2,9 @@ import { HiStar } from "react-icons/hi";
 
 const Apartment = ({ data }) => {
   // console.log(data);
-  console.count("apartment ");
+  console.count("apartment");
   return (
-    <div className="mb-[2rem] w-[21.875rem] mx-auto">
+    <div className="mb-[2rem] sm:mb-[3.0625rem] sm:w-[100%]    max-w-[21.875rem] mx-auto">
       <div className="rounded-2xl h-[14.8969rem]  overflow-hidden ">
         <img className="w-[100%] h-[100%] object-cover" src={data.photo} alt="apartment" />
       </div>

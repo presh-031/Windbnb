@@ -53,10 +53,10 @@ const Form = ({ getFilterData }) => {
         onClick={() => {
           setMainFormIsOpen(true);
         }}
-        className="shadow-[0_1px_6px_rgba(0,0,0,0.1)] rounded-2xl  cursor-pointer  text-sm flex w-fit mx-auto mt-[1.25rem]"
+        className="shadow-[0_1px_6px_rgba(0,0,0,0.1)] rounded-2xl  cursor-pointer  text-sm flex w-fit mx-auto mt-[1.25rem] sm:m-0 sm:mt-0"
       >
         <div className="px-[1rem] border-r py-[0.625rem] flex items-center ">
-          <p className="text-[#BDBDBD]">Add location</p>
+          <p className="text-[#BDBDBD]">{location ? location : "Add location"}</p>
         </div>
         <div className="px-[1rem] border-r py-[0.625rem] flex items-center">
           <p className="text-[#BDBDBD]">Add guests</p>
@@ -84,7 +84,7 @@ const Form = ({ getFilterData }) => {
               onClick={handleAddLocationClick}
             >
               <p className="text-[0.5625rem] font-bold">LOCATION</p>
-              <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>{location ? location : "Add location"}</p>
+              <p className={location ? "" : "text-[0.875rem] text-[#bdbdbd]"}>Add location</p>
             </div>
             <div className=" py-[0.6875rem] px-[1.625rem] cursor-pointer" onClick={handleAddGuestsClick}>
               <p className="text-[0.5625rem] font-bold">GUESTS</p>
