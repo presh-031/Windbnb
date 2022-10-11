@@ -35,7 +35,7 @@ const App = () => {
   }
   return (
     <>
-      <div className="sm:items-center sm:max-w-[1100px] sm:mx-auto  sm:flex sm:justify-between sm:p-4">
+      <div className="sm:items-center sm:max-w-[1100px] sm:mx-auto   sm:flex sm:justify-between sm:p-4">
         <Header />
         <Form getFilterData={getFilterData} />
       </div>

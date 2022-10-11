@@ -66,7 +66,7 @@ const Form = ({ getFilterData }) => {
         </div>
       </section>
       {mainFormIsOpen && (
-        <div className=" p-[1.125rem]  absolute top-0 w-full bg-white z-10">
+        <div className=" p-[1.125rem] right-0 left-0  absolute top-0 w-full bg-white z-10">
           <div className="flex font-bold text-[0.75rem] justify-between  items-center ">
             Edit your search
             <CgClose
