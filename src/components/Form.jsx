@@ -67,7 +67,7 @@ const Form = ({ getFilterData }) => {
       </section>
       {mainFormIsOpen && (
         <div className=" p-[1.125rem] right-0 left-0  absolute top-0 w-full bg-white z-10">
-          <div className="flex font-bold text-[0.75rem] justify-between  items-center ">
+          <div className="flex sm:hidden font-bold text-[0.75rem] justify-between  items-center ">
             Edit your search
             <CgClose
               className="cursor-pointer"
@@ -77,9 +77,9 @@ const Form = ({ getFilterData }) => {
               }}
             />
           </div>
-          <div className=" mt-[1rem] rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
+          <div className=" mt-[1rem] sm:flex border border-red-800 rounded-[1rem] shadow-[0_1px_6px_rgba(0,0,0,0.1)]">
             <div
-              className=" py-[0.6875rem] px-[1.625rem]
+              className="  py-[0.6875rem] px-[1.625rem] border border-red-800
                 border-b cursor-pointer "
               onClick={handleAddLocationClick}
             >
@@ -91,6 +91,15 @@ const Form = ({ getFilterData }) => {
               <p className={childrenGuests || adultGuests ? "" : "text-[0.875rem] text-[#bdbdbd]"}>
                 {childrenGuests || adultGuests ? `${childrenGuests + adultGuests} guests ` : "Add guests"}
               </p>
+            </div>
+            <div className="text-center hidden sm:block">
+              <button
+                onClick={handleSearchBtnClick}
+                className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
+              >
+                <MdSearch />
+                Search
+              </button>
             </div>
           </div>
           {showLocations && (
@@ -126,7 +135,7 @@ const Form = ({ getFilterData }) => {
               </div>
             </div>
           )}
-          <div className="text-center">
+          <div className="text-center sm:hidden">
             <button
               onClick={handleSearchBtnClick}
               className="rounded-[1rem] px-[1.5rem] py-[0.9375rem] bg-[#eb5757] text-[#f2f2f2] mb-[0.75rem] mx-auto border flex items-center gap-x-[0.6844rem]"
