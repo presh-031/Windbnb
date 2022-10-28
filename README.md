@@ -74,6 +74,6 @@ $ npm start
 
 ## Contact
 
-- Website [your-website.com](https://presh-031-portfolio.netlify.app)
-- GitHub [@your-username](https://github.com/presh-031)
-- Twitter [@your-twitter](https://twitter.com/Presh_031)
+- Website [presh-031-portfolio](https://presh-031-portfolio.netlify.app)
+- GitHub [presh-031](https://github.com/presh-031)
+- Twitter [Presh_031](https://twitter.com/Presh_031)
