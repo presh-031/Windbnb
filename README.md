@@ -49,10 +49,15 @@ This application/site was created as a submission to a [DevChallenges](https://d
 The user stories are :
 
 - I can see a list of properties
+
 - I can see the property card with a name, rating, apartment type, and super host
+
 - I can open the filter drawer
+
 - I can filter properties by location and number of guests
+
 - I can see the number of filtered items
+
 - I can see pages following given designs
 
 ## How To Use
